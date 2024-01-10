@@ -1,0 +1,29 @@
+<html>
+	<script>
+		async function calculate(){
+			let principal=document.getElementById("principal").value;
+			let rate=document.getElementById("rate").value;
+			let time=document.getElementById("time").value;
+			let ans=document.getElementById("answer");
+			const response=await fetch(`http://localhost:3000/calculate?principal=${principal}&rate=${rate}&time=${time}`)
+			const answer=await response.text()
+			//console.log(answer);
+			ans.innerHTML=answer;
+				}
+	</script>
+	<body>
+		<div>
+			<input id="principal" placeholder="enter principal"></input>
+		</div>
+		<div>
+			<input id="rate" placeholder="enter rate"></input>
+		</div>
+		<div>
+			<input id="time" placeholder="enter time"></input>
+		</div>
+		<div>
+			<button onclick="calculate()">Calculate</button>
+		</div>
+		<div id="answer"></div>
+	</body>
+</html>
